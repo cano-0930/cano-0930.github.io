@@ -1,0 +1,601 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>我的书库 | cano</title><meta name="author" content="cano"><meta name="copyright" content="cano"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="&#x2F;* 书籍网格布局样式 *&#x2F; .books-grid {     display: grid;     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));     gap: 25px;     margin: 30px 0; } &#x2F;* 书籍卡片样式 *&#x2F; .book-card {     background: #fff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的书库">
+<meta property="og:url" content="https://cano-0930.github.io/books/index.html">
+<meta property="og:site_name" content="cano">
+<meta property="og:description" content="&#x2F;* 书籍网格布局样式 *&#x2F; .books-grid {     display: grid;     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));     gap: 25px;     margin: 30px 0; } &#x2F;* 书籍卡片样式 *&#x2F; .book-card {     background: #fff">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cano-0930.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2025-12-29T11:35:14.296Z">
+<meta property="article:modified_time" content="2025-12-29T11:35:14.296Z">
+<meta property="article:author" content="cano">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cano-0930.github.io/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://cano-0930.github.io/books/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '我的书库',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background: white;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url(/img/default_top.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">cano</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">我的书库</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="container" id="article-container"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* 书籍网格布局样式 */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+/* 书籍卡片样式 */
+.book-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.book-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+/* 书籍封面容器 */
+.book-cover-container {
+    position: relative;
+    padding-top: 140%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.book-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.book-card:hover .book-cover {
+    transform: scale(1.05);
+}
+/* 阅读状态标签 */
+.book-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+.status-reading { background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%); }
+.status-finished { background: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%); }
+.status-plan { background: linear-gradient(45deg, #fa709a 0%, #fee140 100%); }
+/* 书籍信息区域 */
+.book-info {
+    padding: 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.book-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    color: #2c3e50;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.book-author {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+/* 评分样式 */
+.book-rating {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+}
+.rating-stars {
+    color: #FFC107;
+    font-size: 14px;
+    margin-right: 8px;
+}
+.rating-value {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+/* 书籍标签 */
+.book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+}
+.book-tag {
+    background: #f8f9fa;
+    color: #6c757d;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 500;
+}
+/* 书籍元信息 */
+.book-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #6c757d;
+}
+.book-date {
+    font-weight: 500;
+}
+/* 页面标题和描述样式 */
+.books-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+.books-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+.books-title:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 3px;
+}
+.books-description {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .books-title {
+        font-size: 2rem;
+    }
+    
+    .book-info {
+        padding: 14px;
+    }
+}
+</style>
+
+
+<!-- 页面标题和描述 -->
+<div class="books-header">
+    <h1 class="books-title">我的阅读世界</h1>
+    <p class="books-description">这里收录了我阅读过的、正在阅读的以及计划阅读的书籍。每一本书都是一次思想的冒险，每一个故事都是一段独特的旅程。</p>
+</div>
+<!-- 书籍网格容器 -->
+<div class="books-grid">
+    <!-- 书籍1 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/santi.jpg" alt="三体" class="book-cover">
+            <span class="book-status status-finished">已读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">三体</h3>
+            <p class="book-author">刘慈欣</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="rating-value">4.8</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">科幻</span>
+                <span class="book-tag">雨果奖</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">2023.05 读完</span>
+        </div>
+    </div>
+    <!-- 书籍2 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/Effective_python.jpg" alt="Effective Python" class="book-cover">
+            <span class="book-status status-reading">在读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">Effective Python</h3>
+            <p class="book-author">Brett Slatkin</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <span class="rating-value">4.5</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">编程</span>
+                <span class="book-tag">Python</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">2024.03 开始</span>
+        </div>
+    </div>
+    <!-- 书籍3 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/atomic_habits.jpg" alt="Atomic Habits" class="book-cover">
+            <span class="book-status status-finished">已读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">Atomic Habits</h3>
+            <p class="book-author">James Clear</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="rating-value">5.0</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">自我提升</span>
+                <span class="book-tag">心理学</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">2023.11 读完</span>
+        </div>
+    </div>
+    <!-- 书籍4 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/huozhe.jpg" alt="活着" class="book-cover">
+            <span class="book-status status-finished">已读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">活着</h3>
+            <p class="book-author">余华</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="rating-value">5.0</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">文学</span>
+                <span class="book-tag">中国小说</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">2023.08 读完</span>
+        </div>
+    </div>
+    <!-- 书籍5 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/the_midnight_library.jpg" alt="The Midnight Library" class="book-cover">
+            <span class="book-status status-plan">想读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">The Midnight Library</h3>
+            <p class="book-author">Matt Haig</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <span class="rating-value">待评</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">小说</span>
+                <span class="book-tag">奇幻</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">计划阅读</span>
+        </div>
+    </div>
+    <!-- 书籍6 -->
+    <div class="book-card">
+        <div class="book-cover-container">
+            <img src="/img/books_img/designing_data_intensive_applications.jpg" alt="Designing Data-Intensive Applications" class="book-cover">
+            <span class="book-status status-reading">在读</span>
+        </div>
+        <div class="book-info">
+            <h3 class="book-title">设计数据密集型应用</h3>
+            <p class="book-author">Martin Kleppmann</p>
+            <div class="book-rating">
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <span class="rating-value">4.6</span>
+            </div>
+            <div class="book-tags">
+                <span class="book-tag">技术</span>
+                <span class="book-tag">数据库</span>
+            </div>
+        </div>
+        <div class="book-meta">
+            <span class="book-date">2024.02 开始</span>
+        </div>
+    </div>
+</div>
+<!-- 页面统计信息 -->
+<div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+    <p style="color: #6c757d; font-size: 1rem;">
+        <span style="font-weight: 600; color: #4facfe;">4</span> 本已读 · 
+        <span style="font-weight: 600; color: #43e97b;">2</span> 本在读 · 
+        <span style="font-weight: 600; color: #fa709a;">1</span> 本想读 · 
+        共计 <span style="font-weight: 600; color: #2c3e50;">7</span> 本书
+    </p>
+</div>
+</div></div></main><footer id="footer" style="background-image: url(/img/default_top.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By cano</span></div><div class="footer_custom_text">今日长缨在手，何时缚住苍龙</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="17608625820" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script></div></body></html>
